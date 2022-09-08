@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+
+<h2>{{tittle}}</h2>
+
+
+{% if exist %}
+<div class="alert alert-danger" role="alert">
+    The page {{entry}} is <a href="wiki/{{entry}}">here! </a>
+</div>
+{% endif %}
+
+
+<form action="{% url 'encyclopedia:new_entry' %}" method="post">
+    {% csrf_token %}
+
+    {{form}}
+    
+    <input type="submit" class="btn btn-primary "  name="btnNewPage" value="{{btn}}">
+</form>
+
+{% endblock %}
